@@ -1,0 +1,17 @@
+<odoo>
+    <template id="document_tax_totals" inherit_id="account.document_tax_totals_template">
+        <xpath expr="//t/tr[2]" position="before">
+            <tr class="border-black" t-if="'ks_amount_discount' in tax_totals and tax_totals['ks_amount_discount']>0">
+                <td>
+                    <span>Universal Discount </span>
+                    <t t-if="tax_totals['ks_global_discount_type'] == 'percent'">
+                        (<span t-out="tax_totals['ks_global_discount_rate']"/>%)
+                    </t>
+                </td>
+                <td class="text-end">
+                    <span t-out="tax_totals['formatted_ks_amount_discount']">0</span>
+                </td>
+            </tr>
+        </xpath>
+    </template>
+</odoo>
